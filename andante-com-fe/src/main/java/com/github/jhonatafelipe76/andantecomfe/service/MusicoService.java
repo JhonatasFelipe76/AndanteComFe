@@ -5,6 +5,7 @@ import com.github.jhonatafelipe76.andantecomfe.repository.MusicoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MusicoService {
@@ -14,13 +15,23 @@ public class MusicoService {
         this.musicoRepository = musicoRepository;
     }
 
-    public Musico Salvar(Musico musico){
+    public Musico salvar(Musico musico){
         return musicoRepository.save(musico);
     }
 
     public List<Musico> listarMusicos() {
         return musicoRepository.findAll();
     }
+
+    public Optional<Musico> buscarPorId(Long id){
+        return musicoRepository.findById(id);
+    }
+
+    public void excluirPorId(Long id){
+        musicoRepository.deleteById(id);
+    }
+
+
 
 
 
